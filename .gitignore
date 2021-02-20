@@ -1,0 +1,8 @@
+# ignora pacotes instalados pelo npm
+node_modules
+
+# arquivos de backup (alcança também arquivos nos subdiretórios)
+*~
+*.bak
+
+# outros arquivos
