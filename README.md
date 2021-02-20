@@ -6,3 +6,4 @@ Dependências:
 
 - Express
 - Handlebars (view engine)
+- Jest para testes unitários
