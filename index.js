@@ -33,6 +33,13 @@ app.use(handlers.notFound);
 app.use(handlers.serverError);
 
 
-app.listen(port, () => console.log(
-  `Express started on http://localhost:${port}; ` + `press Ctrl+C to terminate...`
-));
+/*
+  Aqui o prof Brown está criando um recurso para que a aplicação possa ser chamada/requerida na forma de um módulo para ser usado no Teste de Integração.
+*/
+if (require.main === module) {
+  app.listen(port, () => console.log(
+    `Express started on http://localhost:${port}; ` + `press Ctrl+C to terminate...`
+  ));
+} else {
+  module.exports = app
+}

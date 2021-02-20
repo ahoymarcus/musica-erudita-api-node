@@ -7,3 +7,6 @@ Dependências:
 - Express
 - Handlebars (view engine)
 - Jest para testes unitários
+- Puppeteer para testes de Integração
+- Portfinder como dependência para a aplicação ser capaz de achar portas abertas para se comunicar
+- ESLint
