@@ -1,6 +1,12 @@
 # ignora pacotes instalados pelo npm
 node_modules
 
+.credentials.*
+
+env.*
+
+*.log
+
 # arquivos de backup (alcança também arquivos nos subdiretórios)
 *~
 *.bak
