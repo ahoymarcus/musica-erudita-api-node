@@ -1,5 +1,6 @@
 const express = require('express');
 const expressHandlebars = require('express-handlebars');
+const bodyParser = require('body-parser');
 
 const handlers = require('./lib/handlers');
 
@@ -7,7 +8,9 @@ const handlers = require('./lib/handlers');
 const app = express();
 const port = process.env.PORT || 3000;
 
+
 app.use(express.static(__dirname + '/public'));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // configurando a View engine Handlebars
 app.engine('handlebars', expressHandlebars({
@@ -24,6 +27,9 @@ app.get('/', handlers.home);
 // O mét app desconsidera case, / e a querystring
 // código 200 é default no Express
 app.get('/about', handlers.about);
+
+
+
 
 
 // página 404 personalizada
