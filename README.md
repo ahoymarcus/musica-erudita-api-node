@@ -5,10 +5,10 @@ Uma Aplicação Web com Node e Express, apresentando conteúdos variados sobre m
 Dependências:
 
 - Express
-- Handlebars (view engine)
+- Express-handlebars (view engine)
 - Jest para testes unitários
 - Puppeteer para testes de Integração
 - Portfinder como dependência para a aplicação ser capaz de achar portas abertas para se comunicar
 - ESLint
-- Body-parser para analizar o corpo de requisições
+- Body-parser para analizar o corpo de requisições POST
 - Mysql
