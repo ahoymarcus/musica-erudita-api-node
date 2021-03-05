@@ -18,6 +18,26 @@ app.get('/compositores', function(req, res) {
     res.json(compositores);
   });
 });
+
+/*
+  Atenção: a rota /compositores/:id deve preceder a /compositores/:tipo
+  A expressão regular (\\d+) é responsável por aceitar apenas números para responsta na rota
+*/
+app.get('/compositores/:id(\\d+)', function(req, res) {
+  let id = req.params.id;
+
+  CompositoresDB.getCompositoresById(id, function(compositor) {
+    res.json(compositor);
+  });
+});
+app.delete('/compositores/:id(\\d+)', function(req, res) {
+  let id = req.params.id;
+
+  console.log("Deletar compositor id: " + id);
+  CompositoresDB.deleteById(id, function(affectedrows) {
+    res.json({ msg: 'Compositor deletado com sucesso...' });
+  });
+});
 app.get('/compositores/:tipo', function(req, res) {
   let tipo = req.params.tipo;
 
@@ -41,6 +61,8 @@ app.put('/compositores', function(req, res) {
     res.json(compositor);
   });
 });
+
+
 
 
 
