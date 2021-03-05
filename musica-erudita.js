@@ -26,6 +26,24 @@ app.get('/compositores/:tipo', function(req, res) {
   });
 });
 
+app.post('/compositores', function(req, res) {
+  let compositor = req.body;
+
+  CompositoresDB.save(compositor, function(compositor) {
+    res.json(compositor);
+  });
+});
+
+app.put('/compositores', function(req, res) {
+  let compositor = req.body;
+
+  CompositoresDB.update(compositor, function(compositor) {
+    res.json(compositor);
+  });
+});
+
+
+
 let server = app.listen(3000, function() {
   let host = server.address().address;
   let port = server.address().port;
