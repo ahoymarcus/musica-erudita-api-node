@@ -12,7 +12,7 @@ app.use(bodyParser.json());
 /*
   ROTAS da API Compositores
 */
-app.use('/api', require('./routes/compositores'));
+app.use('/api/compositores', require('./routes/compositores'));
 
 
 let server = app.listen(3000, function() {
