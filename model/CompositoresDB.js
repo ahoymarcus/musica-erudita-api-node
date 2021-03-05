@@ -19,9 +19,11 @@ class CompositoresDB {
 
     let sql = 'SELECT id, apelido, ano_nasc, ano_falec, loc_nasc, tipo, estilo FROM compositores';
     let query = connection.query(sql, function(err, results, fields) {
-      if (err) throw error;
+      if (err) {
+        callback(err, null);
+      }
 
-      callback(results);
+      callback(null, results);
     });
     console.log(query.sql);
 
@@ -33,9 +35,11 @@ class CompositoresDB {
 
     let sql = "SELECT id, apelido, ano_nasc, ano_falec, loc_nasc, tipo, estilo FROM compositores WHERE tipo = '" + tipo + "'";
     let query = connection.query(sql, function(err, results, fields) {
-      if (err) throw err;
+      if (err) {
+        callback(err, null);
+      }
 
-      callback(results);
+      callback(null, results);
     });
     console.log(query.sql);
 
@@ -47,14 +51,16 @@ class CompositoresDB {
 
     let sql = "SELECT id, apelido, ano_nasc, ano_falec, loc_nasc, tipo, estilo FROM compositores WHERE id = ?";
     let query = connection.query(sql, id, function(err, results, fields) {
-      if (err) throw err;
+      if (err) {
+        callback(err, null);
+      }
 
       if (results.length == 0) {
         console.log("Nenhum compositor encontrado...");
         return;
       }
       let compositor = results[0];
-      callback(compositor);
+      callback(null, compositor);
     });
     console.log(query.sql);
 
@@ -66,10 +72,12 @@ class CompositoresDB {
 
     let sql = "INSERT INTO compositores SET ?";
     let query = connection.query(sql, compositor, function(err, results, fields) {
-      if (err) throw err;
+      if (err) {
+        callback(err, null);
+      }
 
       compositor.id = results.insertId;
-      callback(compositor);
+      callback(null, compositor);
     });
     console.log(query.sql);
 
@@ -82,9 +90,11 @@ class CompositoresDB {
     let sql = "UPDATE compositores set ? WHERE id = ?";
     let id = compositor.id;
     let query = connection.query(sql, [compositor, id], function(err, results, fields) {
-      if (err) throw err;
+      if (err) {
+        callback(err, null);
+      }
 
-      callback(compositor);
+      callback(null, compositor);
     });
     console.log(query.sql);
 
@@ -97,9 +107,12 @@ class CompositoresDB {
     let sql = "DELETE FROM compositores WHERE id = ?";
     let id  = compositor.id;
     let query = connection.query(sql, id, function(err, results, fields) {
-      if (err) throw err;
+      if (err) {
+        callback(err, null);
+      }
 
-      callback(compositor);
+      // Atenção: quando há um erro o obj compositor está sendo retornado???
+      callback(null, compositor);
     });
     console.log(query.sql);
 
@@ -111,9 +124,12 @@ class CompositoresDB {
 
     let sql = "DELETE FROM compositores WHERE id = ?";
     let query = connection.query(sql, id, function(err, results, fields) {
-      if (err) throw err;
+      if (err) {
+        callback(err, null);
+      }
 
-      callback(results.affectedRows);
+      // Atenção: quando há um erro o obj affectedRows indefinido derruba o servidor!!!
+      callback(null, results.affectedRows);
     });
     console.log(query.sql);
 

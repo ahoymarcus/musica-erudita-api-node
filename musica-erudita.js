@@ -28,13 +28,13 @@ app.use(function(req, res, next) {
 
 // code 500
 app.use(function(err, req, res, next) {
-  console.error(err.stack);
+  console.error(err);
 
   res.status(500);
   /*
     Atenção: em Produção é necessário substituir a mensagem de erro do sistema por uma mensagem Genérica!!!
   */
-  res.json({ msg: 'Ocorreu um erro :: ' + err.message });
+  res.json({ erro: "Erro na transação." });
 });
 
 
