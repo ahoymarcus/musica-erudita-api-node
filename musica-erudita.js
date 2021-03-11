@@ -1,6 +1,9 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 
+const expressHandlebars = require('express-handlebars');
+const handlers = require('./lib/handlers');
+
 
 
 let app = express();
@@ -8,11 +11,25 @@ let app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+app.use(express.static(__dirname + '/public'));
+
+app.engine('handlebars', expressHandlebars({
+  defaultLayout: 'main',
+}));
+app.set('view engine', 'handlebars');
+
+app.get('/', handlers.home);
+
+app.get('/about', handlers.about);
+
+
 
 /*
-  ROTAS da API Compositores
+  ROTAS da API Mysql Compositores
 */
-app.use('/api/compositores', require('./routes/compositores'));
+app.use('/api/mysql/compositores', require('./routes/compositores'));
+
+
 
 
 // teste de erros
