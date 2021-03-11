@@ -22,6 +22,7 @@ app.get('/', handlers.home);
 
 app.get('/about', handlers.about);
 
+app.get('/api/mysql', handlers.compositoresMysql);
 
 
 /*
