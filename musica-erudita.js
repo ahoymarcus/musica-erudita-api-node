@@ -28,7 +28,7 @@ app.get('/api/mysql', handlers.compositoresMysql);
 /*
   ROTAS da API Mysql Compositores
 */
-app.use('/api/mysql/compositores', require('./routes/compositores'));
+app.use('/api/mysql/compositores', require('./routes/compositoresMysql'));
 
 
 

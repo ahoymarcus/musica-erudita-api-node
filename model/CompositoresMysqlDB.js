@@ -1,7 +1,7 @@
 const mysql = require('mysql');
 
 
-class CompositoresDB {
+class CompositoresMysqlDB {
   static connect() {
     const connection = mysql.createConnection({
       host: 'localhost',
@@ -15,7 +15,7 @@ class CompositoresDB {
   }
 
   static getCompositores(callback) {
-    let connection = CompositoresDB.connect();
+    let connection = CompositoresMysqlDB.connect();
 
     let sql = 'SELECT id, apelido, ano_nasc, ano_falec, loc_nasc, tipo, estilo FROM compositores';
     let query = connection.query(sql, function(err, results, fields) {
@@ -31,7 +31,7 @@ class CompositoresDB {
   }
 
   static getCompositoresByTipo(tipo, callback) {
-    let connection = CompositoresDB.connect();
+    let connection = CompositoresMysqlDB.connect();
 
     let sql = "SELECT id, apelido, ano_nasc, ano_falec, loc_nasc, tipo, estilo FROM compositores WHERE tipo = '" + tipo + "'";
     let query = connection.query(sql, function(err, results, fields) {
@@ -47,7 +47,7 @@ class CompositoresDB {
   }
 
   static getCompositoresById(id, callback) {
-    let connection = CompositoresDB.connect();
+    let connection = CompositoresMysqlDB.connect();
 
     let sql = "SELECT id, apelido, ano_nasc, ano_falec, loc_nasc, tipo, estilo FROM compositores WHERE id = ?";
     let query = connection.query(sql, id, function(err, results, fields) {
@@ -68,7 +68,7 @@ class CompositoresDB {
   }
 
   static save(compositor, callback) {
-    let connection = CompositoresDB.connect();
+    let connection = CompositoresMysqlDB.connect();
 
     let sql = "INSERT INTO compositores SET ?";
     let query = connection.query(sql, compositor, function(err, results, fields) {
@@ -85,7 +85,7 @@ class CompositoresDB {
   }
 
   static update(compositor, callback) {
-    let connection = CompositoresDB.connect();
+    let connection = CompositoresMysqlDB.connect();
 
     let sql = "UPDATE compositores set ? WHERE id = ?";
     let id = compositor.id;
@@ -102,7 +102,7 @@ class CompositoresDB {
   }
 
   static delete(compositor, callback) {
-    let connection = CompositoresDB.connect();
+    let connection = CompositoresMysqlDB.connect();
 
     let sql = "DELETE FROM compositores WHERE id = ?";
     let id  = compositor.id;
@@ -120,7 +120,7 @@ class CompositoresDB {
   }
 
   static deleteById(id, callback) {
-    let connection = CompositoresDB.connect();
+    let connection = CompositoresMysqlDB.connect();
 
     let sql = "DELETE FROM compositores WHERE id = ?";
     let query = connection.query(sql, id, function(err, results, fields) {
@@ -137,4 +137,4 @@ class CompositoresDB {
   }
 };
 
-module.exports = CompositoresDB;
+module.exports = CompositoresMysqlDB;
