@@ -12,3 +12,4 @@ Dependências:
 - ESLint
 - Body-parser para analizar o corpo de requisições POST
 - Mysql
+- MongoDB
