@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 
 const expressHandlebars = require('express-handlebars');
 const handlers = require('./lib/handlers');
+const db = require('./model/mongodb');
 
 
 
@@ -24,12 +25,15 @@ app.get('/about', handlers.about);
 
 app.get('/api/mysql', handlers.compositoresMysql);
 
+app.get('/api/mongodb/', handlers.compositoresMongodb);
+
 
 /*
-  ROTAS da API Mysql Compositores
+  ROTAS para as APIs Compositores
 */
 app.use('/api/mysql/compositores', require('./routes/compositoresMysql'));
 
+app.use('/api/mongodb/compositores', require('./routes/compositoresMongodb'));
 
 
 
@@ -56,8 +60,30 @@ app.use(function(err, req, res, next) {
 });
 
 
-let server = app.listen(3000, function() {
-  let host = server.address().address;
-  let port = server.address().port;
-  console.log("Servidor iniciado em http://%s:%s", host, port);
+/*
+  Para inicializar sem o Mongodb
+*/
+// let server = app.listen(3000, function() {
+//   let host = server.address().address;
+//   let port = server.address().port;
+//   console.log("Servidor iniciado em http://%s:%s", host, port);
+// });
+
+/*
+  PARA INICIALIZAR SÓ APÓS CONEXÃO COM O MONGODB
+*/
+db.connect(function(err) {
+  if (err) {
+    console.log('Erro ao conectar com o MongoDB');
+    process.exit(1);
+  } else {
+    console.log("MongoDB conectado: ", db);
+
+    // Iniciando o servidor do Nodejs
+    let server = app.listen(3000, function() {
+      let host = server.address().address;
+      let port = server.address().port;
+      console.log("Servidor inciado em http://%s:%s", host, port);
+    });
+  }
 });
