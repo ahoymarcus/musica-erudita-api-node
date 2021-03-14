@@ -1,6 +1,6 @@
 /*
-  site FACSENAC-DF
-  https://www.df.senac.br/faculdade/
+  Estilos para as Seções Básicas:
+  HEADER e .SENAC-CONTAINER
 */
 * {
   margin: 0;
@@ -10,7 +10,6 @@
 body {
   background-color: yellow; /*#f29301; #f29e0f*/
 }
-
 
 
 header h1 {
@@ -77,6 +76,29 @@ header nav a img {
   border-radius: 0 0 5px 5px;
 }
 
+
+
+
+/*
+  Estilos para as Seções Secundárias:
+  HOME, MYSQL e MONGODB
+*/
+.home-container, .mysql-container, .mongodb-container {
+  display: flex;
+
+}
+
+.home-databases h2 {
+  margin-top: 35px;
+}
+.home-databases img {
+  width: 300px;
+  height: 295px;
+
+  margin: 0 45px 40px 0;
+}
+
+
 section h3 {
   margin-top: 20px;
 }
@@ -112,7 +134,7 @@ section img {
   }
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 720px) {
   section img {
     max-width: 90%;
     min-width: 80%;
