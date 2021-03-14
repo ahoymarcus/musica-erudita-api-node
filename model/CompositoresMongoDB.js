@@ -32,17 +32,17 @@ class CompositoresMongoDB {
   static getCompositoresById(id, callback) {
 
     let compositores = db.get().collection('compositores');
-    compositores.findOne({ "_id": Object(id) }, function(err, results) {
+    compositores.find({"_id":ObjectId(id)}, function(err, results) {
       if (err) {
         callback(err, null);
       }
 
-      if (results.length == 0) {
-        console.log("Nenhum compositor encontrado...");
-        return;
-      }
-      let compositor = results[0];
-      callback(null, compositor);
+      // if (results.length == 0) {
+      //   console.log("Nenhum compositor encontrado...");
+      //   return;
+      // }
+      // let compositor = results[0];
+      callback(null, results);
     });
   }
 

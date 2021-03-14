@@ -63,27 +63,27 @@ app.use(function(err, req, res, next) {
 /*
   Para inicializar sem o Mongodb
 */
-// let server = app.listen(3000, function() {
-//   let host = server.address().address;
-//   let port = server.address().port;
-//   console.log("Servidor iniciado em http://%s:%s", host, port);
-// });
+let server = app.listen(3000, function() {
+  let host = server.address().address;
+  let port = server.address().port;
+  console.log("Servidor iniciado em http://%s:%s", host, port);
+});
 
 /*
   PARA INICIALIZAR SÓ APÓS CONEXÃO COM O MONGODB
 */
-db.connect(function(err) {
-  if (err) {
-    console.log('Erro ao conectar com o MongoDB');
-    process.exit(1);
-  } else {
-    console.log("MongoDB conectado: ", db);
-
-    // Iniciando o servidor do Nodejs
-    let server = app.listen(3000, function() {
-      let host = server.address().address;
-      let port = server.address().port;
-      console.log("Servidor inciado em http://%s:%s", host, port);
-    });
-  }
-});
+// db.connect(function(err) {
+//   if (err) {
+//     console.log('Erro ao conectar com o MongoDB');
+//     process.exit(1);
+//   } else {
+//     console.log("MongoDB conectado: ", db);
+//
+//     // Iniciando o servidor do Nodejs
+//     let server = app.listen(3000, function() {
+//       let host = server.address().address;
+//       let port = server.address().port;
+//       console.log("Servidor inciado em http://%s:%s", host, port);
+//     });
+//   }
+// });
