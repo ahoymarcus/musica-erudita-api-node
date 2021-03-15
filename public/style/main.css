@@ -38,6 +38,7 @@ header nav li {
 }
 header a {
   text-decoration: none;
+  font-size: 20px;
 }
 header nav a {
   padding-right: 20px;
@@ -85,6 +86,7 @@ header nav a img {
 */
 .home-container, .mysql-container, .mongodb-container {
   display: flex;
+  justify-content: space-around;
 
 }
 
@@ -98,6 +100,10 @@ header nav a img {
   margin: 0 45px 40px 0;
 }
 
+.api-mysql, .api-mongodb {
+  display: flex;
+
+}
 
 section h3 {
   margin-top: 20px;
@@ -106,10 +112,14 @@ section img {
   border: 1px yellow solid;
   border-radius: 1px;
 
-  width: 15%;
+  width: 45%;
   max-width: 418px;
 }
 
+.img-big {
+  width: 80%;
+  margin-right: 25px;
+}
 
 /*MEDIA QUERIES*/
 @media screen and (max-width: 815px){
@@ -132,11 +142,28 @@ section img {
   header nav a img {
     width: 30px;
   }
+
+  .api-mysql, .api-mongodb {
+    flex-direction: column;
+  }
+
+  .img-big {
+    width: 70%;
+  }
+  section img {
+    max-width: 90%;
+    width: 60%;
+  }
 }
 
 @media screen and (max-width: 720px) {
+
   section img {
-    max-width: 90%;
-    min-width: 80%;
+    width: 40%;
+  }
+
+  .home-container {
+    flex-direction: column;
+
   }
 }
