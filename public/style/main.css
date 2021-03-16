@@ -8,18 +8,19 @@
 }
 
 body {
-  background-color: yellow; /*#f29301; #f29e0f*/
+  background-color: #ffff00a8; /*yellow; #f29301; #f29e0f*/
 }
 
 
 header h1 {
+  color: #060404;/*#310606;*/
   margin-bottom: 15px;
 
   text-align: center;
 }
 
 header nav {
-  background-color: yellow;
+  background-color: #ffff0059; /*yellow;*/
   /*margin-bottom: 10px;*/
   padding-bottom: 10px;
   display: flex;
@@ -29,8 +30,8 @@ header nav ul {
   align-items: center;
   justify-content: space-between;
 
-  width: 80%;
-  max-width: 600px;
+  width: 70%;
+  max-width: 700px;
 }
 header nav li {
   list-style: none;
@@ -39,6 +40,7 @@ header nav li {
 header a {
   text-decoration: none;
   font-size: 20px;
+  color: #751e1efc; /*brown;*/
 }
 header nav a {
   padding-right: 20px;
@@ -84,28 +86,53 @@ header nav a img {
   Estilos para as Seções Secundárias:
   HOME, MYSQL e MONGODB
 */
-.home-container, .mysql-container, .mongodb-container {
+.home-container {
   display: flex;
   justify-content: space-around;
 
 }
 
-.home-databases h2 {
-  margin-top: 35px;
+.home h2 {
+  color: #380707e6;
+  font-size: 35px;
+  text-align: center;
+  margin-top: 20px;
+}
+.home h3 {
+  font-size: 30px;
+  color: #074188;
+  margin-top: 65px;
 }
 .home-databases img {
   width: 300px;
   height: 295px;
 
-  margin: 0 45px 40px 0;
+  margin: 0 45px 85px 0;
+}
+
+
+.mysql-container, .mongodb-container {
+  font-size: 28px;
+  text-align: center;
+}
+.mysql-container h2, .mongodb-container  h2 {
+  color: #380707e6;
+  margin: 30px 0;
 }
 
 .api-mysql, .api-mongodb {
   display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.api-mysql, .api-mongodb {
 
+  margin-bottom: 60px;
 }
 
 section h3 {
+  font-size: 25px;
+  color: #074188;
   margin-top: 20px;
 }
 section img {
@@ -117,9 +144,14 @@ section img {
 }
 
 .img-big {
-  width: 80%;
+  width: 90%;
   margin-right: 25px;
 }
+
+
+
+
+
 
 /*MEDIA QUERIES*/
 @media screen and (max-width: 815px){
